@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blur</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../style/bootstrap-icons.css">
+
+
+  <link rel="stylesheet" type="text/css" href="codemirror.css">
+  <link rel="stylesheet" type="text/css" href="railscasts.css">
+  <link rel="stylesheet" type="text/css" href="hint/show-hint.css">
+
+  <script src="codemirror.js"></script>
+  <script src="hint/show-hint.js"></script>
+  <script src="hint/anyword-hint.js"></script>
+  <script src="groovy.js"></script>
+  <script src="sublime.js"></script>
+
+  <style>
+    .wrap {
+      width: 654px;
+      margin: 64px auto 0 auto;
+    }
+    .seg-title {
+      border-left: 9px solid #ffa111;
+      padding-left: 12px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h5>
+      <i class="bi bi-chat-right-quote" style="font-size: 20px;"></i>
+      Preview:
+    </h5>
+
+
+    <textarea id="editor" class="form-control">
+# -*- coding: utf-8 -*-
+
+"""
+node {
+    agent {
+        echo "123123"
+    }
+}
+"""
+
+class SaltApi(object):
+    def __init__(self):
+        self._url = salt_url
+        self._username = salt_user
+        self._password = salt_password
+        self._headers = {"Content-type": "application/json"}
+        self.expr_form = 'glob'
+
+    def _get_token_id(self):
+        params = {'eauth': 'pam', 'username': self._username}
+        result = self.get_data(params, prefix="/login")
+        if result:
+            self._token = result['token']
+            return self._token
+        else:
+            return None
+
+
+if __init__ == '__main__':
+    pass
+
+    </textarea>
+
+    <br>
+    <h5>
+      <i class="bi bi-chat-right-quote" style="font-size: 20px;"></i>
+      Source code
+    </h5>
+    <a href="https://github.com/hzbd/eggs/blob/main/codemirror/">Code Mirror Editor</a>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+
+<script>
+  CodeMirror.commands.autocomplete = function (cm) {
+    CodeMirror.showHint(cm, CodeMirror.hint.anyword);
+  };
+  var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+    value: 'console.log("Hello, World");',
+    autofocus: true,
+    lineNumbers: true,
+    lineWrapping: true,
+    readOnly: false,
+    keyMap: 'sublime',
+    mode: 'groovy',
+    matchBrackets: true,
+    theme: 'railscasts',
+    styleActiveLine: true,
+    tabSize: 4,
+    indentAuto: true,
+    newlineAndIndent: true,
+    indentUnit: 2,
+    indentWithTabs: false,
+    extraKeys: {
+      "Ctrl-Space": "autocomplete"
+    },
+  });
+  // var totalLines = editor.lineCount();
+  editor.setSize(null, 450);
+  // editor.save();
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+</html>
